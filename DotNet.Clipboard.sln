@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Clipboard", "src\DotNet.Clipboard\DotNet.Clipboard.csproj", "{C822E7EC-E641-499A-870B-04E40914CF3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Clipboard.Test", "test\DotNet.Clipboard.Test\DotNet.Clipboard.Test.csproj", "{460BD52B-EA8E-481C-81E2-49AFB3995ED1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C822E7EC-E641-499A-870B-04E40914CF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C822E7EC-E641-499A-870B-04E40914CF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C822E7EC-E641-499A-870B-04E40914CF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C822E7EC-E641-499A-870B-04E40914CF3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{460BD52B-EA8E-481C-81E2-49AFB3995ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{460BD52B-EA8E-481C-81E2-49AFB3995ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{460BD52B-EA8E-481C-81E2-49AFB3995ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{460BD52B-EA8E-481C-81E2-49AFB3995ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B15E1F0-BCA9-4C02-BE8A-C9769511B496}
+	EndGlobalSection
+EndGlobal

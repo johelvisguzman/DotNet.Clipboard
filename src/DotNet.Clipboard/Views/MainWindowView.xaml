@@ -1,0 +1,161 @@
+﻿<mahApps:MetroWindow x:Class="DotNet.Clipboard.MainWindowView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                     xmlns:converters="clr-namespace:DotNet.Clipboard.Converters"
+                     xmlns:viewModels="clr-namespace:DotNet.Clipboard.ViewModels"
+                     xmlns:mvvm="clr-namespace:DotNetToolkit.Wpf.Mvvm;assembly=DotNetToolkit.Wpf"
+                     mvvm:ViewModelLocator.AutoWireViewModel="True"
+                     mc:Ignorable="d"
+                     WindowState="Minimized"
+                     ShowInTaskbar="False"
+                     WindowStartupLocation="Manual"
+                     Style="{StaticResource MetroWindowStyle}"
+                     Width="375"
+                     Height="400"
+                     Title="{Binding DisplayName}"
+                     d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}">
+    <mahApps:MetroWindow.Resources>
+        <ResourceDictionary>
+            <converters:ListBoxIndexConverter x:Key="IndexConverter" />
+            <converters:ClipDataToContentControlConverter x:Key="ContentControlConverter" />
+            <Style x:Key="SearchMetroTextBoxStyleEx" TargetType="{x:Type TextBox}" BasedOn="{StaticResource SearchMetroTextBox}">
+                <Setter Property="mahApps:TextBoxHelper.ClearTextButton" Value="True" />
+                <Setter Property="mahApps:TextBoxHelper.Watermark" Value="{lex:BLoc Key=SearchWatermark}" />
+                <Style.Triggers>
+                    <Trigger Property="mahApps:TextBoxHelper.HasText" Value="True">
+                        <Setter Property="mahApps:TextBoxHelper.ButtonContent" Value="r" />
+                        <Setter Property="mahApps:TextBoxHelper.ButtonContentTemplate" Value="{x:Null}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="ListContainerStyle" TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </mahApps:MetroWindow.Resources>
+    <mahApps:MetroWindow.RightWindowCommands>
+        <mahApps:WindowCommands>
+            <Button Command="{Binding LaunchSettingsCommand}" 
+                    FocusVisualStyle="{x:Null}" 
+                    IsTabStop="False">
+                <AccessText Text="{lex:BLoc Key=Settings_WindowCommandButtonLabel}" />
+            </Button>
+        </mahApps:WindowCommands>
+    </mahApps:MetroWindow.RightWindowCommands>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0"
+                 x:Name="ListBox"
+                 ItemsSource="{Binding Clips}"
+                 SelectionMode="Extended"
+                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                 PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown"
+                 FocusVisualStyle="{x:Null}"
+                 ItemContainerStyle="{StaticResource ListContainerStyle}"
+                 IsTabStop="False"
+                 MouseMove="ListBox_MouseMove">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction 
+                        Command="{Binding SelectCommand}" 
+                        CommandParameter="{Binding ElementName=ListBox, Path=SelectedItem}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.InputBindings>
+                <KeyBinding Key="Delete" 
+                            Command="{Binding DeleteCommand}" 
+                            CommandParameter="{Binding ElementName=ListBox, Path=SelectedItems}" />
+                <KeyBinding Key="Enter" 
+                            Command="{Binding SelectCommand}" 
+                            CommandParameter="{Binding ElementName=ListBox, Path=SelectedItem}" />
+            </ListBox.InputBindings>
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{lex:BLoc Key=Delete}"
+                              Click="ListBox_MenuItem_Click_Delete" />
+                </ContextMenu>
+            </ListBox.ContextMenu>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid MaxHeight="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Converter={StaticResource IndexConverter}}"
+                                   VerticalAlignment="Center" 
+                                   FontSize="10" />
+                        <Border Grid.Column="1" 
+                                BorderThickness="0 0 1 0" 
+                                BorderBrush="{StaticResource GrayBrush6}" 
+                                Margin="5 0" />
+                        <ContentControl Grid.Column="2"
+                                        FocusVisualStyle="{x:Null}"
+                                        IsTabStop="False">
+                            <MultiBinding Converter="{StaticResource ContentControlConverter}">
+                                <Binding Path="Data" />
+                                <Binding Path="Format" />
+                            </MultiBinding>
+                        </ContentControl>
+                        <Grid.ToolTip>
+                            <Grid MaxWidth="350">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition MaxHeight="400" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ContentControl Grid.Row="0"
+                                                FocusVisualStyle="{x:Null}"
+                                                IsTabStop="False">
+                                    <MultiBinding Converter="{StaticResource ContentControlConverter}">
+                                        <Binding Path="Data" />
+                                        <Binding Path="Format" />
+                                    </MultiBinding>
+                                </ContentControl>
+                                <Border Grid.Row="1" 
+                                        BorderThickness="0 1 0 0" 
+                                        BorderBrush="{StaticResource GrayBrush6}" 
+                                        Margin="0 5">
+                                    <StackPanel>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{} {0}: {1}">
+                                                    <lex:BLoc Key="Tooltip_AddedDate" />
+                                                    <Binding Path="AddedDate" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{} {0}: {1}">
+                                                    <lex:BLoc Key="Tooltip_LastUsedDate" />
+                                                    <Binding Path="LastUsedDate" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </Grid.ToolTip>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox Grid.Row="1" 
+                 x:Name="SearchTextBox"
+                 Margin="0 5 0 0"
+                 Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                 PreviewKeyDown="SearchTextBox_PreviewKeyDown"
+                 Style="{StaticResource SearchMetroTextBoxStyleEx}" />
+    </Grid>
+</mahApps:MetroWindow>
