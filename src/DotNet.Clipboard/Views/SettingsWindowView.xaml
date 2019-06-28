@@ -1,0 +1,100 @@
+﻿<mahApps:MetroWindow x:Class="DotNet.Clipboard.Views.SettingsWindowView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                     xmlns:converters="clr-namespace:DotNet.Clipboard.Converters"
+                     xmlns:viewModels="clr-namespace:DotNet.Clipboard.ViewModels"
+                     xmlns:mvvm="clr-namespace:DotNetToolkit.Wpf.Mvvm;assembly=DotNetToolkit.Wpf"
+                     mvvm:ViewModelLocator.AutoWireViewModel="True"
+                     WindowStartupLocation="CenterScreen"
+                     SizeToContent="WidthAndHeight"
+                     Style="{StaticResource MetroWindowStyle}"
+                     MinHeight="400"
+                     ResizeMode="NoResize"
+                     Title="{Binding DisplayName}"
+                     mc:Ignorable="d"
+                     d:DataContext="{d:DesignInstance viewModels:SettingsWindowViewModel}">
+    <Window.Resources>
+        <converters:HotKeyStringConverter x:Key="HotKeyStringConverter" />
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.Resources>
+            <Thickness x:Key="ControlMargin">0 0 0 5</Thickness>
+            <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="Margin" Value="-5 0 0 0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    Background="{TemplateBinding Background}" 
+                                    Padding="{TemplateBinding Padding}" 
+                                    SnapsToDevicePixels="true" 
+                                    CornerRadius="5" 
+                                    HorizontalAlignment="Stretch">
+                                <TextBlock TextWrapping="Wrap" Text="{TemplateBinding Content}" TextAlignment="Right" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Style>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0">
+            <TabItem Header="{lex:Loc Key=Settings_GeneralTabHeader}">
+                <AdornerDecorator>
+                    <StackPanel Width="425">
+                        <Label Content="{lex:Loc Key=Settings_HotKeyLabel}" />
+                        <mahApps:HotKeyBox AreModifierKeysRequired="True"
+                                           HotKey="{Binding HotKey, Converter={StaticResource HotKeyStringConverter}}"
+                                           Margin="{StaticResource ControlMargin}" />
+                        <Label Content="{lex:Loc Key=Settings_DbPathLabel}" />
+                        <TextBox IsReadOnly="True" Text="{Binding DbPath}"
+                                 ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
+                                 Margin="{StaticResource ControlMargin}" />
+                        <Label Content="{lex:Loc Key=Settings_DbSizeLabel}" />
+                        <TextBox IsReadOnly="True" Text="{Binding DbSize}" Margin="{StaticResource ControlMargin}" />
+                        <Label Content="{lex:Loc Key=Settings_MaxSavedCopiesCountLabel}" />
+                        <TextBox Text="{Binding MaxSavedCopiesCount}" Margin="{StaticResource ControlMargin}" />
+                        <Label Content="{lex:Loc Key=Settings_LanguageLabel}" />
+                        <ComboBox Margin="{StaticResource ControlMargin}"
+                                  ItemsSource="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=MergedAvailableCultures}"
+                                  SelectedItem="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=Culture}" 
+                                  DisplayMemberPath="DisplayName"
+                                  VerticalAlignment="Top" />
+                    </StackPanel>
+                </AdornerDecorator>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Right" 
+                    Orientation="Horizontal" 
+                    Margin="0 15 0 0">
+            <Button x:Name="Submit" 
+                    Command="{Binding SubmitCommand}" 
+                    Margin="0 0 5 0" Width="100">
+                <AccessText Text="{lex:BLoc Key=SubmitButton, StringFormat='_{0}'}" />
+            </Button>
+            <Button x:Name="Close" 
+                    Command="{Binding CloseCommand}" 
+                    Width="100">
+                <AccessText Text="{lex:BLoc Key=CloseButton, StringFormat='_{0}'}" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</mahApps:MetroWindow>
+    

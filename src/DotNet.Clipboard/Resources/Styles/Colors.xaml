@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Colors courtesy of: http://flatuicolors.com/ -->
+    <SolidColorBrush x:Key="FlatColorTurquoise" Color="#1ABC9C" />
+    <SolidColorBrush x:Key="FlatColorEmerald" Color="#2ECC71" />
+    <SolidColorBrush x:Key="FlatColorPeterRiver" Color="#3498DB" />
+    <SolidColorBrush x:Key="FlatColorAmethyst" Color="#9B59B6" />
+    <SolidColorBrush x:Key="FlatColorWetAsphalt" Color="#34495E" />
+    <SolidColorBrush x:Key="FlatColorGreenSea" Color="#16A085" />
+    <SolidColorBrush x:Key="FlatColorNephritis" Color="#27AE60" />
+    <SolidColorBrush x:Key="FlatColorBlizeHole" Color="#2980B9" />
+    <SolidColorBrush x:Key="FlatColorWisteria" Color="#8E44AD" />
+    <SolidColorBrush x:Key="FlatColorMidnightBlue" Color="#2C3E50" />
+    <SolidColorBrush x:Key="FlatColorSunFlower" Color="#F1C40f" />
+    <SolidColorBrush x:Key="FlatColorCarrot" Color="#E67E22" />
+    <SolidColorBrush x:Key="FlatColorAlizarin" Color="#E74C3C" />
+    <SolidColorBrush x:Key="FlatColorClouds" Color="#ECF0F1" />
+    <SolidColorBrush x:Key="FlatColorConcrete" Color="#95A5A6" />
+    <SolidColorBrush x:Key="FlatColorOrange" Color="#F39C12" />
+    <SolidColorBrush x:Key="FlatColorPomegranate" Color="#C0392B" />
+    <SolidColorBrush x:Key="FlatColorSilver" Color="#BDC3C7" />
+    <SolidColorBrush x:Key="FlatColorAsbestos" Color="#7F8C8D" />
+ 
+</ResourceDictionary>
