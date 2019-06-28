@@ -4,7 +4,7 @@
 A simple clipboard manager.
 
 ### Main Screen
-![Main Screen](https://raw.githubusercontent.com/johelvisguzman/DotNet.Clipboard/master/	main.png)
+![Main Screen](https://raw.githubusercontent.com/johelvisguzman/DotNet.Clipboard/master/docs/main.png)
 ![Main Screen](https://raw.githubusercontent.com/johelvisguzman/DotNet.Clipboard/master/docs/main_with_clips.png)
 
 ### Settings Screen
