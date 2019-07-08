@@ -44,20 +44,20 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetToolkit.Repository, Version=2.9.0.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DotNetToolkit.Repository.2.9.0-beta-404\lib\net451\DotNetToolkit.Repository.dll</HintPath>
+    <Reference Include="DotNetToolkit.Repository, Version=2.8.5.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetToolkit.Repository.2.8.5\lib\net451\DotNetToolkit.Repository.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetToolkit.Repository.EntityFramework, Version=2.9.0.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DotNetToolkit.Repository.EntityFramework.2.9.0-beta-404\lib\net451\DotNetToolkit.Repository.EntityFramework.dll</HintPath>
+    <Reference Include="DotNetToolkit.Repository.EntityFramework, Version=2.8.5.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetToolkit.Repository.EntityFramework.2.8.5\lib\net451\DotNetToolkit.Repository.EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetToolkit.Repository.Extensions.Unity, Version=2.9.0.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DotNetToolkit.Repository.Extensions.Unity.2.9.0-beta-404\lib\net451\DotNetToolkit.Repository.Extensions.Unity.dll</HintPath>
+    <Reference Include="DotNetToolkit.Repository.Extensions.Unity, Version=2.8.5.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetToolkit.Repository.Extensions.Unity.2.8.5\lib\net451\DotNetToolkit.Repository.Extensions.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetToolkit.Repository.InMemory, Version=2.9.0.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DotNetToolkit.Repository.InMemory.2.9.0-beta-404\lib\net451\DotNetToolkit.Repository.InMemory.dll</HintPath>
+    <Reference Include="DotNetToolkit.Repository.InMemory, Version=2.8.5.0, Culture=neutral, PublicKeyToken=721af652d7609e34, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetToolkit.Repository.InMemory.2.8.5\lib\net451\DotNetToolkit.Repository.InMemory.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetToolkit.Wpf, Version=1.0.3.27, Culture=neutral, PublicKeyToken=fc15a78dc7f484d4, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DotNetToolkit.Wpf.1.0.3.27\lib\net451\DotNetToolkit.Wpf.dll</HintPath>
+    <Reference Include="DotNetToolkit.Wpf, Version=1.0.4.35, Culture=neutral, PublicKeyToken=fc15a78dc7f484d4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetToolkit.Wpf.1.0.4.35\lib\net451\DotNetToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
